@@ -1,0 +1,177 @@
+classes
+http://schema.org/Person	792549
+http://schema.org/Intangible	452616
+http://schema.org/Organization	382335
+http://schema.org/Place	186757
+http://www.w3.org/2004/02/skos/core#Concept	138764
+http://schema.org/GeoCoordinates	120821
+http://schema.org/CreativeWork	65762
+http://rdfs.org/ns/void#Dataset	1
+properties
+http://schema.org/name	3866938
+http://www.w3.org/2004/02/skos/core#inScheme	3760040
+http://www.w3.org/2000/01/rdf-schema#label	3565271
+http://schema.org/sameAs	2934236
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type	2139605
+http://www.w3.org/2004/02/skos/core#altLabel	1987266
+http://www.w3.org/2004/02/skos/core#prefLabel	1880022
+http://purl.org/dc/terms/identifier	1880021
+http://www.w3.org/2004/02/skos/core#relatedMatch	449309
+http://xmlns.com/foaf/0.1/focus	312217
+http://www.w3.org/2004/02/skos/core#related	309454
+http://www.w3.org/2004/02/skos/core#broader	181327
+http://purl.org/dc/terms/isReplacedBy	178906
+http://schema.org/geo	120821
+http://schema.org/latitude	120821
+http://schema.org/longitude	120821
+http://purl.org/dc/terms/replaces	118937
+http://purl.org/dc/terms/title	2
+http://purl.org/dc/terms/license	1
+http://www.w3.org/2000/01/rdf-schema#comment	1
+http://www.w3.org/2000/01/rdf-schema#seeAlso	1
+http://www.w3.org/2002/07/owl#sameAs	1
+property types
+http://schema.org/Intangible	http://schema.org/sameAs	http://www.w3.org/2004/02/skos/core#Concept	41970
+http://schema.org/Place	http://schema.org/sameAs	http://www.w3.org/2004/02/skos/core#Concept	8588
+http://schema.org/Organization	http://schema.org/sameAs	http://www.w3.org/2004/02/skos/core#Concept	9
+http://schema.org/Person	http://schema.org/sameAs	http://www.w3.org/2004/02/skos/core#Concept	2
+http://schema.org/CreativeWork	http://schema.org/sameAs	http://www.w3.org/2004/02/skos/core#Concept	1
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#relatedMatch	http://www.w3.org/2004/02/skos/core#Concept	439801
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#relatedMatch	http://www.w3.org/2004/02/skos/core#Concept	9449
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#relatedMatch	http://www.w3.org/2004/02/skos/core#Concept	32
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#relatedMatch	http://www.w3.org/2004/02/skos/core#Concept	21
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#relatedMatch	http://www.w3.org/2004/02/skos/core#Concept	6
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Organization	104154
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Place	56745
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Intangible	52366
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Intangible	38970
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Place	18009
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Place	14305
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Intangible	9596
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Person	7339
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Organization	2181
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Person	1575
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Place	350
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Intangible	333
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Person	297
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Organization	180
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#related	http://schema.org/CreativeWork	141
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#related	http://schema.org/CreativeWork	48
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Organization	47
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Intangible	22
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Person	7
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Organization	6
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Person	3
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#related	http://schema.org/Place	2
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#related	http://schema.org/CreativeWork	1
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Intangible	177506
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Place	2683
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Intangible	665
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Organization	126
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Intangible	65
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Place	61
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Organization	54
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/CreativeWork	47
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Person	23
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Intangible	19
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Place	18
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Intangible	9
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Place	8
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Organization	3
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Person	3
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Person	1
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#broader	http://schema.org/Place	1
+http://schema.org/Person	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Person	74531
+http://schema.org/Intangible	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Intangible	44987
+http://schema.org/Organization	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Organization	17177
+http://schema.org/Place	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Place	7664
+http://schema.org/CreativeWork	http://purl.org/dc/terms/isReplacedBy	http://schema.org/CreativeWork	2128
+http://schema.org/Organization	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Person	557
+http://schema.org/Place	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Organization	267
+http://schema.org/Intangible	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Organization	111
+http://schema.org/Organization	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Place	104
+http://schema.org/Intangible	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Person	100
+http://schema.org/Intangible	http://purl.org/dc/terms/isReplacedBy	http://schema.org/CreativeWork	55
+http://schema.org/Intangible	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Place	47
+http://schema.org/Organization	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Intangible	24
+http://schema.org/Organization	http://purl.org/dc/terms/isReplacedBy	http://schema.org/CreativeWork	10
+http://schema.org/Person	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Organization	7
+http://schema.org/CreativeWork	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Intangible	6
+http://schema.org/Person	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Intangible	2
+http://schema.org/Place	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Intangible	2
+http://schema.org/CreativeWork	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Organization	2
+http://schema.org/Person	http://purl.org/dc/terms/isReplacedBy	http://schema.org/CreativeWork	1
+http://schema.org/Place	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Person	1
+http://schema.org/Person	http://purl.org/dc/terms/isReplacedBy	http://schema.org/Place	1
+http://schema.org/Place	http://schema.org/geo	http://schema.org/GeoCoordinates	120798
+http://schema.org/Organization	http://schema.org/geo	http://schema.org/GeoCoordinates	23
+http://schema.org/Person	http://purl.org/dc/terms/replaces	http://schema.org/Person	76420
+http://schema.org/Organization	http://purl.org/dc/terms/replaces	http://schema.org/Organization	17347
+http://schema.org/Intangible	http://purl.org/dc/terms/replaces	http://schema.org/Intangible	13252
+http://schema.org/Place	http://purl.org/dc/terms/replaces	http://schema.org/Place	7887
+http://schema.org/CreativeWork	http://purl.org/dc/terms/replaces	http://schema.org/CreativeWork	2368
+http://schema.org/Person	http://purl.org/dc/terms/replaces	http://schema.org/Organization	618
+http://schema.org/Organization	http://purl.org/dc/terms/replaces	http://schema.org/Place	282
+http://schema.org/Place	http://purl.org/dc/terms/replaces	http://schema.org/Organization	106
+http://schema.org/CreativeWork	http://purl.org/dc/terms/replaces	http://schema.org/Intangible	54
+http://schema.org/Organization	http://purl.org/dc/terms/replaces	http://schema.org/Intangible	48
+http://schema.org/Place	http://purl.org/dc/terms/replaces	http://schema.org/Intangible	26
+http://schema.org/Intangible	http://purl.org/dc/terms/replaces	http://schema.org/Organization	23
+http://schema.org/Person	http://purl.org/dc/terms/replaces	http://schema.org/Intangible	20
+http://schema.org/CreativeWork	http://purl.org/dc/terms/replaces	http://schema.org/Organization	11
+http://schema.org/Organization	http://purl.org/dc/terms/replaces	http://schema.org/Person	8
+http://schema.org/Intangible	http://purl.org/dc/terms/replaces	http://schema.org/CreativeWork	6
+http://schema.org/Intangible	http://purl.org/dc/terms/replaces	http://schema.org/Place	3
+http://schema.org/Intangible	http://purl.org/dc/terms/replaces	http://schema.org/Person	2
+http://schema.org/Organization	http://purl.org/dc/terms/replaces	http://schema.org/CreativeWork	1
+http://schema.org/CreativeWork	http://purl.org/dc/terms/replaces	http://schema.org/Person	1
+http://schema.org/Place	http://purl.org/dc/terms/replaces	http://schema.org/Person	1
+http://schema.org/Person	http://purl.org/dc/terms/replaces	http://schema.org/Place	1
+literal properties
+http://schema.org/Person	http://schema.org/name	http://www.w3.org/2001/XMLSchema#string	1654682
+http://schema.org/Organization	http://schema.org/name	http://www.w3.org/2001/XMLSchema#string	984835
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#altLabel	http://www.w3.org/2001/XMLSchema#string	862424
+http://schema.org/Person	http://purl.org/dc/terms/identifier	http://www.w3.org/2001/XMLSchema#string	792549
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/2001/XMLSchema#string	792549
+http://schema.org/Intangible	http://schema.org/name	http://www.w3.org/2001/XMLSchema#string	704596
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#altLabel	http://www.w3.org/2001/XMLSchema#string	602524
+http://schema.org/Intangible	http://purl.org/dc/terms/identifier	http://www.w3.org/2001/XMLSchema#string	452616
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/2001/XMLSchema#string	452616
+http://schema.org/Organization	http://purl.org/dc/terms/identifier	http://www.w3.org/2001/XMLSchema#string	382335
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/2001/XMLSchema#string	382335
+http://schema.org/Place	http://schema.org/name	http://www.w3.org/2001/XMLSchema#string	370742
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#altLabel	http://www.w3.org/2001/XMLSchema#string	251981
+http://schema.org/Place	http://purl.org/dc/terms/identifier	http://www.w3.org/2001/XMLSchema#string	186757
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/2001/XMLSchema#string	186757
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#altLabel	http://www.w3.org/2001/XMLSchema#string	183994
+http://schema.org/CreativeWork	http://schema.org/name	http://www.w3.org/2001/XMLSchema#string	152078
+http://www.w3.org/2004/02/skos/core#Concept	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	139741
+http://schema.org/GeoCoordinates	http://schema.org/latitude	http://www.w3.org/2001/XMLSchema#string	120821
+http://schema.org/GeoCoordinates	http://schema.org/longitude	http://www.w3.org/2001/XMLSchema#string	120821
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#altLabel	http://www.w3.org/2001/XMLSchema#string	86341
+http://schema.org/Organization	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	81900
+http://schema.org/Person	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	81483
+http://schema.org/Intangible	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	77324
+http://schema.org/CreativeWork	http://purl.org/dc/terms/identifier	http://www.w3.org/2001/XMLSchema#string	65762
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/2001/XMLSchema#string	65762
+http://schema.org/Place	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	15769
+http://schema.org/CreativeWork	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/2001/XMLSchema#string	2311
+http://rdfs.org/ns/void#Dataset	http://purl.org/dc/terms/title	http://www.w3.org/2001/XMLSchema#string	1
+http://schema.org/Person	http://www.w3.org/2004/02/skos/core#inScheme	http://www.w3.org/2001/XMLSchema#anyURI	1585098
+http://schema.org/Intangible	http://www.w3.org/2004/02/skos/core#inScheme	http://www.w3.org/2001/XMLSchema#anyURI	905232
+http://schema.org/Person	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	792549
+http://schema.org/Organization	http://www.w3.org/2004/02/skos/core#inScheme	http://www.w3.org/2001/XMLSchema#anyURI	764670
+http://schema.org/Intangible	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	452616
+http://schema.org/Organization	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	382335
+http://schema.org/Place	http://www.w3.org/2004/02/skos/core#inScheme	http://www.w3.org/2001/XMLSchema#anyURI	373514
+http://schema.org/Place	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	186757
+http://schema.org/Person	http://xmlns.com/foaf/0.1/focus	http://www.w3.org/2001/XMLSchema#anyURI	160702
+http://schema.org/Intangible	http://xmlns.com/foaf/0.1/focus	http://www.w3.org/2001/XMLSchema#anyURI	151506
+http://www.w3.org/2004/02/skos/core#Concept	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	138764
+http://schema.org/CreativeWork	http://www.w3.org/2004/02/skos/core#inScheme	http://www.w3.org/2001/XMLSchema#anyURI	131524
+http://schema.org/GeoCoordinates	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	120821
+http://schema.org/CreativeWork	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	65762
+http://schema.org/Organization	http://xmlns.com/foaf/0.1/focus	http://www.w3.org/2001/XMLSchema#anyURI	8
+http://rdfs.org/ns/void#Dataset	http://purl.org/dc/terms/license	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://rdfs.org/ns/void#Dataset	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://schema.org/CreativeWork	http://xmlns.com/foaf/0.1/focus	http://www.w3.org/2001/XMLSchema#anyURI	1

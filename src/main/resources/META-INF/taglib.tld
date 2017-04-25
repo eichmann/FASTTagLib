@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<tlib-version>2.1</tlib-version>
+	<short-name>edu.uiowa.slis.FAST</short-name>
+	<uri>http://slis.uiowa.edu/FAST</uri>
+
+	<tag>
+		<name>SPARQL</name>
+		<tag-class>edu.uiowa.slis.FAST.utility.SPARQL</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subject</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>SPARQLPredicate</name>
+		<tag-class>edu.uiowa.slis.FAST.utility.SPARQLPredicate</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+	<tag>
+		<name>SPARQLObject</name>
+		<tag-class>edu.uiowa.slis.FAST.utility.SPARQLObject</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+	<tag>
+		<name>Intangible</name>
+		<tag-class>edu.uiowa.slis.FAST.Intangible.Intangible</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachIntangible</name>
+		<tag-class>edu.uiowa.slis.FAST.Intangible.IntangibleIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstIntangibleInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Intangible.IntangibleIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastIntangibleInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Intangible.IntangibleIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>IntangibleSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.Intangible.IntangibleSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>IntangibleLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.Intangible.IntangibleLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>Organization</name>
+		<tag-class>edu.uiowa.slis.FAST.Organization.Organization</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachOrganization</name>
+		<tag-class>edu.uiowa.slis.FAST.Organization.OrganizationIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstOrganizationInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Organization.OrganizationIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastOrganizationInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Organization.OrganizationIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>OrganizationSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.Organization.OrganizationSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>OrganizationLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.Organization.OrganizationLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>Place</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.Place</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachPlace</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstPlaceInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Place.PlaceIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastPlaceInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Place.PlaceIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>PlaceSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>PlaceLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachPlaceGeoIterator</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceGeoIterator</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>classFilter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<function>
+		<name>isFirstPlaceGeoInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Place.PlaceGeoIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastPlaceGeoInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Place.PlaceGeoIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>PlaceGeo</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceGeo</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>geo</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>PlaceGeoType</name>
+		<tag-class>edu.uiowa.slis.FAST.Place.PlaceGeoType</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>CreativeWork</name>
+		<tag-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWork</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachCreativeWork</name>
+		<tag-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWorkIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstCreativeWorkInstance</name>
+		<function-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWorkIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastCreativeWorkInstance</name>
+		<function-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWorkIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>CreativeWorkSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWorkSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>CreativeWorkLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.CreativeWork.CreativeWorkLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>Person</name>
+		<tag-class>edu.uiowa.slis.FAST.Person.Person</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachPerson</name>
+		<tag-class>edu.uiowa.slis.FAST.Person.PersonIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstPersonInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Person.PersonIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastPersonInstance</name>
+		<function-class>edu.uiowa.slis.FAST.Person.PersonIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>PersonSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.Person.PersonSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>PersonLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.Person.PersonLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>GeoCoordinates</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinates</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachGeoCoordinates</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstGeoCoordinatesInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastGeoCoordinatesInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>GeoCoordinatesSubjectURI</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesSubjectURI</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>subjectURI</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>GeoCoordinatesLabel</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLabel</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachGeoCoordinatesLatitudeIterator</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLatitudeIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstGeoCoordinatesLatitudeInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLatitudeIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastGeoCoordinatesLatitudeInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLatitudeIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>GeoCoordinatesLatitude</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLatitude</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>latitude</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachGeoCoordinatesLongitudeIterator</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLongitudeIterator</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<function>
+		<name>isFirstGeoCoordinatesLongitudeInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLongitudeIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastGeoCoordinatesLongitudeInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLongitudeIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>GeoCoordinatesLongitude</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesLongitude</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>longitude</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>foreachGeoCoordinatesGeoInverseIterator</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesGeoInverseIterator</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<name>classFilter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<function>
+		<name>isFirstGeoCoordinatesGeoInverseInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesGeoInverseIterator</function-class>
+		<function-signature>java.lang.Boolean getFirstInstance()</function-signature>
+	</function>
+
+	<function>
+		<name>isLastGeoCoordinatesGeoInverseInstance</name>
+		<function-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesGeoInverseIterator</function-class>
+		<function-signature>java.lang.Boolean getLastInstance()</function-signature>
+	</function>
+
+	<tag>
+		<name>GeoCoordinatesGeoInverse</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesGeoInverse</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>geo</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>GeoCoordinatesGeoInverseType</name>
+		<tag-class>edu.uiowa.slis.FAST.GeoCoordinates.GeoCoordinatesGeoInverseType</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
