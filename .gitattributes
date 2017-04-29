@@ -44,6 +44,7 @@ src/main/java/edu/uiowa/slis/FAST/Place/PlaceLabel.java -text
 src/main/java/edu/uiowa/slis/FAST/Place/PlaceSubjectURI.java -text
 src/main/java/edu/uiowa/slis/FAST/README.txt -text
 src/main/java/edu/uiowa/slis/FAST/TagLibSupport.java -text
+src/main/java/edu/uiowa/slis/FAST/utility/Indexer.java -text
 src/main/java/edu/uiowa/slis/FAST/utility/SPARQL.java -text
 src/main/java/edu/uiowa/slis/FAST/utility/SPARQLObject.java -text
 src/main/java/edu/uiowa/slis/FAST/utility/SPARQLPredicate.java -text
