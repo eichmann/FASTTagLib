@@ -40,7 +40,7 @@ public class PlaceGeoIterator extends edu.uiowa.slis.FAST.TagLibSupport {
 
 			rs = getResultSet(prefix+"SELECT ?s ?t where {"
 					+" <" + subjectURI + "> <http://schema.org/geo> ?s . "
-					+" ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t ."
+					+" OPTIONAL { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t } ."
 					+" FILTER NOT EXISTS {"
 					+"   ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?subtype ."
 					+"   ?subtype <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?t ."
@@ -50,9 +50,9 @@ public class PlaceGeoIterator extends edu.uiowa.slis.FAST.TagLibSupport {
 			while(rs.hasNext()) {
 				QuerySolution sol = rs.nextSolution();
 				geo = sol.get("?s").toString();
-				type = getLocalName(sol.get("?t").toString());
-				if (type == null)
-					continue;
+				type = sol.get("?t") == null ? null : getLocalName(sol.get("?t").toString());
+//				if (type == null)
+//					continue;
 				if (classFilter == null || (classFilter != null && type != null && classFilter.containsKey(type))) {
 					log.info("instance: " + geo + "	type: " + type);
 					firstInstance = true;
@@ -75,9 +75,9 @@ public class PlaceGeoIterator extends edu.uiowa.slis.FAST.TagLibSupport {
 			while(rs.hasNext()) {
 				QuerySolution sol = rs.nextSolution();
 				geo = sol.get("?s").toString();
-				type = getLocalName(sol.get("?t").toString());
-				if (type == null)
-					continue;
+				type = sol.get("?t") == null ? null : getLocalName(sol.get("?t").toString());
+//				if (type == null)
+//					continue;
 				if (classFilter == null || (classFilter != null && type != null && classFilter.containsKey(type))) {
 					log.info("instance: " + geo + "	type: " + type);
 					firstInstance = false;

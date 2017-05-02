@@ -40,7 +40,7 @@ public class GeoCoordinatesGeoInverseIterator extends edu.uiowa.slis.FAST.TagLib
 
 			rs = getResultSet(prefix+"SELECT ?s ?t where {"
 					+" ?s <http://schema.org/geo> <" + subjectURI+ "> . "
-					+" ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t ."
+					+" OPTIONAL { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t } ."
 					+" FILTER NOT EXISTS {"
 					+"   ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?subtype ."
 					+"   ?subtype <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?t ."
@@ -50,9 +50,9 @@ public class GeoCoordinatesGeoInverseIterator extends edu.uiowa.slis.FAST.TagLib
 			while(rs.hasNext()) {
 				QuerySolution sol = rs.nextSolution();
 				geoInverse = sol.get("?s").toString();
-				type = getLocalName(sol.get("?t").toString());
-				if (type == null)
-					continue;
+				type = sol.get("?t") == null ? null : getLocalName(sol.get("?t").toString());
+//				if (type == null)
+//					continue;
 				if (classFilter == null || (classFilter != null && type != null && classFilter.containsKey(type))) {
 					log.info("instance: " + geoInverse + "	type: " + type);
 					firstInstance = true;
@@ -75,9 +75,9 @@ public class GeoCoordinatesGeoInverseIterator extends edu.uiowa.slis.FAST.TagLib
 			while(rs.hasNext()) {
 				QuerySolution sol = rs.nextSolution();
 				geoInverse = sol.get("?s").toString();
-				type = getLocalName(sol.get("?t").toString());
-				if (type == null)
-					continue;
+				type = sol.get("?t") == null ? null : getLocalName(sol.get("?t").toString());
+//				if (type == null)
+//					continue;
 				if (classFilter == null || (classFilter != null && type != null && classFilter.containsKey(type))) {
 					log.info("instance: " + geoInverse + "	type: " + type);
 					firstInstance = false;

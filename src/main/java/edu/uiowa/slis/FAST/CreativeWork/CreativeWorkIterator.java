@@ -31,7 +31,7 @@ public class CreativeWorkIterator extends edu.uiowa.slis.FAST.TagLibSupport {
 					"  OPTIONAL { ?s rdfs:label ?labelENG FILTER (langMatches(?labelENG,\"en\")) } "+
 					"  OPTIONAL { ?s rdfs:label ?label    FILTER (lang(?label) = \"\") } "+
 					"  OPTIONAL { ?s rdfs:label ?labelANY FILTER (lang(?labelANY) != \"\") } "+
-					"  BIND(COALESCE(?labelUS, ?labelENG, ?label, ?labelANY) as ?lab) "+
+					"  BIND(COALESCE(?labelUS, ?labelENG, ?label, ?labelANY ) as ?lab) "+
 					"} LIMIT 1000");
 			if(rs.hasNext()) {
 				QuerySolution sol = rs.nextSolution();
