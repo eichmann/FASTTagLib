@@ -33,8 +33,8 @@ public class Indexer {
     static String tripleStore = null;
     static String endpoint = null;
 
-    static String dataPath = "/Volumes/LD4L/";
-    static String lucenePath = "/Volumes/LD4L/lucene/fast/persons";
+    static String dataPath = "/usr/local/RAID/";
+    static String lucenePath = "/usr/local/RAID/lucene/fast/persons";
     static String prefix = 
 	    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
 	    + " PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -50,20 +50,20 @@ public class Indexer {
 	PropertyConfigurator.configure("log4j.info");
 
 	tripleStore = dataPath + args[0];
-	endpoint = "http://guardian.slis.uiowa.edu:3030/" + args[0] + "/sparql";
+	endpoint = "http://services.ld4l.org/fuseki/" + args[0] + "/sparql";
 
 	if (args.length > 0 && args[1].equals("work"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("person"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("organization"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("place"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("intangible"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("geo"))
-	    lucenePath = "/Volumes/LD4L/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
 
 	IndexWriter theWriter = new IndexWriter(FSDirectory.open(new File(lucenePath)), new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_30), true, IndexWriter.MaxFieldLength.UNLIMITED);
 
