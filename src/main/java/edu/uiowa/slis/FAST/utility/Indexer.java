@@ -34,7 +34,7 @@ public class Indexer {
     static String endpoint = null;
 
     static String dataPath = "/usr/local/RAID/";
-    static String lucenePath = "/usr/local/RAID/lucene/fast/persons";
+    static String lucenePath = "/usr/local/RAID/LD4L/lucene/fast/persons";
     static String prefix = 
 	    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
 	    + " PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -53,17 +53,21 @@ public class Indexer {
 	endpoint = "http://services.ld4l.org/fuseki/" + args[0] + "/sparql";
 
 	if (args.length > 0 && args[1].equals("work"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("person"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("organization"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("place"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("intangible"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
-	if (args.length > 0 && args[1].equals("geo"))
-	    lucenePath = "/usr/local/RAID/lucene/" + "fast" + "/" + args[1];
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
+//	if (args.length > 0 && args[1].equals("geo"))
+//	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
+	if (args.length > 0 && args[1].equals("concept"))
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
+	if (args.length > 0 && args[1].equals("event"))
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 
 	IndexWriter theWriter = new IndexWriter(FSDirectory.open(new File(lucenePath)), new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_30), true, IndexWriter.MaxFieldLength.UNLIMITED);
 
@@ -75,10 +79,14 @@ public class Indexer {
 	    indexOrganizations(theWriter);
 	if (args.length > 0 && args[1].equals("place"))
 	    indexPlaces(theWriter);
-	if (args.length > 0 && args[1].equals("geo"))
-	    indexGeos(theWriter);
+//	if (args.length > 0 && args[1].equals("geo"))
+//	    indexGeos(theWriter);
 	if (args.length > 0 && args[1].equals("intangible"))
 	    indexIntangibles(theWriter);
+	if (args.length > 0 && args[1].equals("concept"))
+	    indexConcepts(theWriter);
+	if (args.length > 0 && args[1].equals("event"))
+	    indexEvents(theWriter);
 
 	logger.info("optimizing index...");
 	theWriter.optimize();
@@ -137,6 +145,7 @@ public class Indexer {
 	logger.info("total titles: " + count);
     }
     
+    // this currently only involves blank nodes, so we're suppressing generation and access
     static void indexGeos(IndexWriter theWriter) throws CorruptIndexException, IOException {
 	int count = 0;
 	String query =
@@ -242,6 +251,84 @@ public class Indexer {
 	logger.info("total titles: " + count);
     }
 
+    static void indexConcepts(IndexWriter theWriter) throws CorruptIndexException, IOException {
+	int count = 0;
+	String query =
+		"SELECT DISTINCT ?concept ?label WHERE { "
+		+ "?concept rdf:type <http://www.w3.org/2004/02/skos/core#Concept> . "
+		+ "?concept rdfs:label ?label . "
+    		+ "}";
+	ResultSet rs = getResultSet(prefix + query);
+	while (rs.hasNext()) {
+	    QuerySolution sol = rs.nextSolution();
+	    String concept = sol.get("?concept").toString();
+	    String label = sol.get("?label").toString();
+	    logger.info("concept: " + concept + "\tlabel: " + label);
+	    
+	    Document theDocument = new Document();
+	    theDocument.add(new Field("uri", concept, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("title", label, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("content", label, Field.Store.NO, Field.Index.ANALYZED));
+	    theWriter.addDocument(theDocument);
+	    count++;
+	    if (count % 10000 == 0)
+		logger.info("count: " + count);
+	}
+	logger.info("total titles: " + count);
+    }
+    
+    static void indexEvents(IndexWriter theWriter) throws CorruptIndexException, IOException {
+	int count = 0;
+	String query =
+		"SELECT DISTINCT ?event ?label WHERE { "
+		+ "?event rdf:type <http://schema.org/Event> . "
+		+ "?event <http://www.w3.org/2004/02/skos/core#prefLabel> ?label . "
+    		+ "}";
+	ResultSet rs = getResultSet(prefix + query);
+	while (rs.hasNext()) {
+	    QuerySolution sol = rs.nextSolution();
+	    String event = sol.get("?event").toString();
+	    String label = sol.get("?label").toString();
+	    logger.info("event: " + event + "\tlabel: " + label);
+	    
+	    Document theDocument = new Document();
+	    theDocument.add(new Field("uri", event, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("title", label, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("content", label, Field.Store.NO, Field.Index.ANALYZED));
+
+	    String query1 = 
+		  "SELECT DISTINCT ?name WHERE { "
+			  + "<" + event + "> <http://schema.org/name> ?name . "
+		+ "}";
+	    ResultSet prs = getResultSet(prefix + query1);
+	    while (prs.hasNext()) {
+		QuerySolution psol = prs.nextSolution();
+		String name = psol.get("?name").asLiteral().getString();
+		logger.info("\tname: " + name);
+		theDocument.add(new Field("content", name, Field.Store.NO, Field.Index.ANALYZED));
+	    }
+	    
+	    String query2 = 
+		  "SELECT DISTINCT ?altlabel WHERE { "
+			  + "<" + event + "> skos:altLabel ?altlabel . "
+		+ "}";
+	    ResultSet ars = getResultSet(prefix + query2);
+	    while (ars.hasNext()) {
+		QuerySolution asol = ars.nextSolution();
+		String altlabel = asol.get("?altlabel").asLiteral().getString();
+		logger.info("\talt label: " + altlabel);
+		theDocument.add(new Field("content", altlabel, Field.Store.NO, Field.Index.ANALYZED));
+	    }
+	    
+	    
+	    theWriter.addDocument(theDocument);
+	    count++;
+	    if (count % 10000 == 0)
+		logger.info("count: " + count);
+	}
+	logger.info("total titles: " + count);
+    }
+    
     static public ResultSet getResultSet(String queryString) {
 	if (useSPARQL) {
 	    Query theClassQuery = QueryFactory.create(queryString, Syntax.syntaxARQ);
