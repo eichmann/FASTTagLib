@@ -41,7 +41,9 @@ public class Indexer {
 	    + " PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
 	    + " PREFIX mads: <http://www.loc.gov/mads/rdf/v1#> "
 	    + " PREFIX skos: <http://www.w3.org/2004/02/skos/core#> "
-	    + " PREFIX bib: <http://bib.ld4l.org/ontology/> ";
+	    + " PREFIX bib: <http://bib.ld4l.org/ontology/> "
+    	    + " PREFIX schema: <http://schema.org/> ";
+
 
 
     
@@ -66,6 +68,8 @@ public class Indexer {
 //	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("concept"))
 	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
+	if (args.length > 0 && args[1].equals("genre"))
+	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 	if (args.length > 0 && args[1].equals("event"))
 	    lucenePath = "/usr/local/RAID/LD4L/lucene/" + "fast" + "/" + args[1];
 
@@ -85,6 +89,8 @@ public class Indexer {
 	    indexIntangibles(theWriter);
 	if (args.length > 0 && args[1].equals("concept"))
 	    indexConcepts(theWriter);
+	if (args.length > 0 && args[1].equals("genre"))
+	    indexGenre(theWriter);
 	if (args.length > 0 && args[1].equals("event"))
 	    indexEvents(theWriter);
 
@@ -104,7 +110,7 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String work = sol.get("?work").toString();
-	    String title = sol.get("?title").toString();
+	    String title = sol.get("?title").asLiteral().getString();
 	    logger.info("work: " + work + "\ttitle: " + title);
 	    
 	    Document theDocument = new Document();
@@ -130,7 +136,7 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String organization = sol.get("?organization").toString();
-	    String title = sol.get("?title").toString();
+	    String title = sol.get("?title").asLiteral().getString();
 	    logger.info("organization: " + organization + "\ttitle: " + title);
 	    
 	    Document theDocument = new Document();
@@ -157,7 +163,7 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String geo = sol.get("?geo").toString();
-	    String title = sol.get("?title").toString();
+	    String title = sol.get("?title").asLiteral().getString();
 	    logger.info("geo: " + geo + "\ttitle: " + title);
 	    
 	    Document theDocument = new Document();
@@ -183,7 +189,7 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String intangible = sol.get("?intangible").toString();
-	    String title = sol.get("?title").toString();
+	    String title = sol.get("?title").asLiteral().getString();
 	    logger.info("intangible: " + intangible + "\ttitle: " + title);
 	    
 	    Document theDocument = new Document();
@@ -209,7 +215,7 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String place = sol.get("?place").toString();
-	    String title = sol.get("?title").toString();
+	    String title = sol.get("?title").asLiteral().getString();
 	    logger.info("palce: " + place + "\ttitle: " + title);
 	    
 	    Document theDocument = new Document();
@@ -255,20 +261,54 @@ public class Indexer {
 	int count = 0;
 	String query =
 		"SELECT DISTINCT ?concept ?label WHERE { "
-		+ "?concept rdf:type <http://www.w3.org/2004/02/skos/core#Concept> . "
-		+ "?concept rdfs:label ?label . "
+		+ "?concept rdf:type schema:Intangible . "
+		+ "?concept skos:inScheme <http://id.worldcat.org/fast/ontology/1.0/#facet-Topical> . "
+		+ "?concept skos:prefLabel ?label . "
     		+ "}";
 	ResultSet rs = getResultSet(prefix + query);
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String concept = sol.get("?concept").toString();
-	    String label = sol.get("?label").toString();
+	    String label = sol.get("?label").asLiteral().getString();
 	    logger.info("concept: " + concept + "\tlabel: " + label);
 	    
 	    Document theDocument = new Document();
 	    theDocument.add(new Field("uri", concept, Field.Store.YES, Field.Index.NOT_ANALYZED));
 	    theDocument.add(new Field("title", label, Field.Store.YES, Field.Index.NOT_ANALYZED));
 	    theDocument.add(new Field("content", label, Field.Store.NO, Field.Index.ANALYZED));
+	    
+	    annotateEntity(theDocument, concept);
+	    
+	    theWriter.addDocument(theDocument);
+	    count++;
+	    if (count % 10000 == 0)
+		logger.info("count: " + count);
+	}
+	logger.info("total titles: " + count);
+    }
+    
+    static void indexGenre(IndexWriter theWriter) throws CorruptIndexException, IOException {
+	int count = 0;
+	String query =
+		"SELECT DISTINCT ?concept ?label WHERE { "
+		+ "?concept rdf:type schema:Intangible . "
+		+ "?concept skos:inScheme <http://id.worldcat.org/fast/ontology/1.0/#facet-FormGenre> . "
+		+ "?concept skos:prefLabel ?label . "
+    		+ "}";
+	ResultSet rs = getResultSet(prefix + query);
+	while (rs.hasNext()) {
+	    QuerySolution sol = rs.nextSolution();
+	    String concept = sol.get("?concept").toString();
+	    String label = sol.get("?label").asLiteral().getString();
+	    logger.info("concept: " + concept + "\tlabel: " + label);
+	    
+	    Document theDocument = new Document();
+	    theDocument.add(new Field("uri", concept, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("title", label, Field.Store.YES, Field.Index.NOT_ANALYZED));
+	    theDocument.add(new Field("content", label, Field.Store.NO, Field.Index.ANALYZED));
+	    
+	    annotateEntity(theDocument, concept);
+	    
 	    theWriter.addDocument(theDocument);
 	    count++;
 	    if (count % 10000 == 0)
@@ -288,17 +328,28 @@ public class Indexer {
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
 	    String event = sol.get("?event").toString();
-	    String label = sol.get("?label").toString();
+	    String label = sol.get("?label").asLiteral().getString();
 	    logger.info("event: " + event + "\tlabel: " + label);
 	    
 	    Document theDocument = new Document();
 	    theDocument.add(new Field("uri", event, Field.Store.YES, Field.Index.NOT_ANALYZED));
 	    theDocument.add(new Field("title", label, Field.Store.YES, Field.Index.NOT_ANALYZED));
 	    theDocument.add(new Field("content", label, Field.Store.NO, Field.Index.ANALYZED));
-
+	    
+	    annotateEntity(theDocument, event);
+	    
+	    theWriter.addDocument(theDocument);
+	    count++;
+	    if (count % 10000 == 0)
+		logger.info("count: " + count);
+	}
+	logger.info("total titles: " + count);
+    }
+    
+    static public void annotateEntity(Document theDocument, String entity) {
 	    String query1 = 
 		  "SELECT DISTINCT ?name WHERE { "
-			  + "<" + event + "> <http://schema.org/name> ?name . "
+			  + "<" + entity + "> <http://schema.org/name> ?name . "
 		+ "}";
 	    ResultSet prs = getResultSet(prefix + query1);
 	    while (prs.hasNext()) {
@@ -310,7 +361,7 @@ public class Indexer {
 	    
 	    String query2 = 
 		  "SELECT DISTINCT ?altlabel WHERE { "
-			  + "<" + event + "> skos:altLabel ?altlabel . "
+			  + "<" + entity + "> skos:altLabel ?altlabel . "
 		+ "}";
 	    ResultSet ars = getResultSet(prefix + query2);
 	    while (ars.hasNext()) {
@@ -319,14 +370,6 @@ public class Indexer {
 		logger.info("\talt label: " + altlabel);
 		theDocument.add(new Field("content", altlabel, Field.Store.NO, Field.Index.ANALYZED));
 	    }
-	    
-	    
-	    theWriter.addDocument(theDocument);
-	    count++;
-	    if (count % 10000 == 0)
-		logger.info("count: " + count);
-	}
-	logger.info("total titles: " + count);
     }
     
     static public ResultSet getResultSet(String queryString) {
